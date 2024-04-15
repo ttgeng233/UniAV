@@ -37,4 +37,23 @@ This folder
 └───libs
 │   ...
 ```
-## Training
+## Training and Evaluation
+Coming soon.
+
+<!-- ## Evaluation
+Coming soon. -->
+
+
+## Citation
+If you find our data and code are useful for your research, please consider citing our paper
+```
+@article{geng2024uniav,
+  title={UniAV: Unified Audio-Visual Perception for Multi-Task Video Localization},
+  author={Geng, Tiantian and Wang, Teng and Zhang, Yanfu and Duan, Jinming and Guan, Weili and Zheng, Feng},
+  journal={arXiv preprint arXiv:2404.03179},
+  year={2024}
+}
+```
+
+## Acknowledgement
+The video and audio features were extracted using [ONE-PEACE](https://github.com/OFA-Sys/ONE-PEACE). Our baseline model was implemented based on [ActionFormer](https://github.com/happyharrycn/actionformer_release) and [UnAV](https://github.com/ttgeng233/UnAV). We thank the authors for their efforts. If you use our code, please also consider to cite their works.
