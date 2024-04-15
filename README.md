@@ -5,7 +5,7 @@ This repo is the official code of ["Unified Audio-Visual Perception for Multi-Ta
 -  -->
 ## Introduction
 This paper introduces the first unified framework to localize all three kinds of instances in untrimmed videos, including visual actions, sound events and audio-visual events. All these instances contribute equally to a comprehensive understanding of video content.
-![](https://github.com/ttgeng233/UniAV/blob/main/fig1_new.jpg)
+![](https://github.com/ttgeng233/UniAV/blob/main/fig1.jpg)
 <!-- ![](.\overview_final_new.jpg) -->
 
 ## Requirements
