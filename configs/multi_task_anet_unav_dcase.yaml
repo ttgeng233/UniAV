@@ -1,0 +1,97 @@
+TASK1:
+  task_type: TAL
+  dataset_name: anet  
+  train_split: ['training']
+  val_split: ['validation']
+  test_split: ['validation']
+  dataset: {
+    json_file: ./data/activitynet13/annotations/anet1.3_all.json,
+    feat_folder: ./data/activitynet13/av_features,
+    file_prefix: v_,
+    feat_stride: 8,
+    num_frames: 16,
+    default_fps: 16,
+    trunc_thresh: 0.5, 
+    num_classes: 200,
+    max_seq_len: 256, 
+    max_buffer_len_factor: 1.0,
+    force_upsampling: True,
+    class_aware: False, 
+  }
+  train_cfg: {
+    loss_weight: 1,  
+    init_loss_norm: 400,   
+    label_smoothing: 0.1,
+  }
+  test_cfg: {
+    multiclass_nms: True,
+    ext_score_file: ,
+    nms_sigma: 0.75, 
+  }
+  batch_size: 16
+  learning_rate: 0.001  
+  epochs: 5
+  
+TASK2:  
+  task_type: AVEL
+  dataset_name: unav100
+  train_split: ['train']
+  val_split: ['test'] 
+  test_split: ['test']
+  dataset: {
+    json_file: ./data/unav100/annotations/unav100_all.json,
+    feat_folder: ./data/unav100/av_features,
+    feat_stride: 4,
+    num_frames: 16,
+    default_fps: 16,
+    trunc_thresh: 0.5, 
+    num_classes: 100,
+    max_seq_len: 256, 
+    max_buffer_len_factor: 1.0,
+    class_aware: True,
+  }
+  train_cfg: {
+    loss_weight: 1,
+    init_loss_norm: 300,   
+    label_smoothing: 0.0,
+  }
+  test_cfg: {
+    multiclass_nms: True,
+    ext_score_file: ,
+    nms_sigma: 0.4
+  }
+  batch_size: 16
+  learning_rate: 0.001
+  epochs: 5
+
+TASK3:
+  task_type: SED
+  dataset_name: dcase
+  train_split: ['validation']
+  val_split: ['public_eval']
+  test_split: ['public_eval']
+  dataset: {
+    json_file: ./data/desed/annotations/dcase_all.json,
+    feat_folder: ./data/desed/av_features,
+    feat_stride: 4,
+    num_frames: 16,
+    default_fps: 16,
+    trunc_thresh: 0.3, 
+    num_classes: 10, 
+    max_seq_len: 64,
+    max_buffer_len_factor: 1.0,
+    class_aware: True, 
+  }
+  train_cfg: {
+    loss_weight: 1,
+    init_loss_norm: 400,    
+    label_smoothing: 0.0,
+  }
+  test_cfg: {
+    multiclass_nms: True,
+    ext_score_file: ,
+    nms_sigma: 0.4
+  }
+  batch_size: 16
+  learning_rate: 0.001
+  epochs: 5

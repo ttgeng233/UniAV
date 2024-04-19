@@ -5,7 +5,7 @@ This repo is the official code of ["Unified Audio-Visual Perception for Multi-Ta
 -  -->
 ## Introduction
 This paper introduces the first unified framework to localize all three kinds of instances in untrimmed videos, including visual actions, sound events and audio-visual events. All these instances contribute equally to a comprehensive understanding of video content.
-![](https://github.com/ttgeng233/UniAV/blob/main/fig1.jpg)
+![](https://github.com/ttgeng233/UniAV/blob/main/fig2.jpg)
 <!-- ![](.\overview_final_new.jpg) -->
 
 ## Requirements
@@ -27,7 +27,7 @@ This folder
 └───data/
 │    └───activitynet13/
 │    |	 └───annotations
-│    |	 └───av_features  
+│    |	 └───av_features  # mix av features together
 │    └───desed/
 │    |	 └───annotations
 │    |	 └───av_features 
@@ -37,15 +37,19 @@ This folder
 └───libs
 │   ...
 ```
-## Training and evaluation
-Coming soon.
-
-## Running on your own videos
-Coming soon.
-
-<!-- ## Evaluation
-Coming soon. -->
-
+## Training 
+Run `./train.py` to jointly train UniAV on three tasks (TAL, SED and AVEL). We use distributed training here. 
+```
+CUDA_VISIBLE_DEVICES={divice_id} MASTER_ADDR={localhost} WORLD_SIZE={1} RANK={0} python -m torch.distributed.launch --master_port {port_id} --nproc_per_node={1} train.py ./configs/multi_task_anet_unav_dcase.yaml --output reproduce  --tasks 1-2-3 --num_train_epochs 5
+```
+## Evaluation
+Run `eval.py` to evaluate the trained model. You can download our pre-trained model from [this link](https://pan.baidu.com/s/1hBPtNirtkgX-TSzDwwe6xQ?pwd=kfne) (pwd: kfne).
+```
+CUDA_VISIBLE_DEVICES={divice_id} MASTER_ADDR={localhost} WORLD_SIZE={1} RANK={0} python -m torch.distributed.launch --master_port {port_id} --nproc_per_node={1} eval.py ./configs/multi_task_anet_unav_dcase.yaml ./ckpt/multi_task_anet_unav_dcase_reproduce --tasks 1-2-3 
+```
+## Running UniAV on your own videos
+Given an untrimmed video with audio, our model can localize all three kinds of instances occurring in the video in a single pass. 
+The inference code and demo will be released soon.
 
 ## Citation
 If you find our data and code are useful for your research, please consider citing our paper
